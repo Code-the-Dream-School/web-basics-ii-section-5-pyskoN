@@ -10,13 +10,18 @@
 //As our previous Battleship, the winner is the player that hits the 4 opponent's ships first
 //one more Thing create a 'reset' and a 'new game' buttons as childs of the element with the id 'buttons'. the reset button has to start the game again and the new game create a new game with new players and a new random board.
 
-const board_Player1 = document.getElementById("board_player1");
-const board_Player2 = document.getElementById("board_player2");
+let board_Player1 = document.getElementById("board_player1");
+let board_Player2 = document.getElementById("board_player2");
 
 const name_player1 = document.getElementById("name_player1");
 const name_player2 = document.getElementById("name_player2");
 name_player1.textContent = prompt("What is your name?");
 name_player2.textContent = prompt("What is your name?");
+// if (name_player1.textContent === null) {
+//   name_player1.textContent = "Player1";
+// } else if (name_player2.textContent === null) {
+//   name_player2.textContent = "Player2";
+// }
 
 const lives1 = document.getElementById("ships_player1");
 const lives2 = document.getElementById("ships_player2");
@@ -40,6 +45,14 @@ function RR(e) {
   if (button === buttonNew) {
     location.reload();
   } else if (button === buttonReset) {
+    lives1.innerHTML = 4;
+    lives2.innerHTML = 4;
+    board_Player1.innerHTML = "";
+    board_Player2.innerHTML = "";
+    createBoard(board_Player1);
+    addingshipsToBoard(board_Player1);
+    createBoard(board_Player2);
+    addingshipsToBoard(board_Player2);
   }
 }
 
